@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= documentTitle %>
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+
+<body>
+    <%- include('../includes/header.ejs') -%>
+    <section id="form_container">
+        <h1><%= name %></h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Day</th>
+                    <th scope="col">Start At</th>
+                    <th scope="col">End At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i=0; i < schedules.length; i++) { %>
+                <tr>
+                        <th scope="row"><%= schedules[i].id %></th>
+                        <td>
+                              <%= user[schedules[i].user_id - 1] %>
+                        </td>
+                        <td>
+                            <%= day[schedules[i].day - 1] %>
+                        </td>
+                        <td>
+                            <%= schedules[i].start_at %>
+                        </td>
+                        <td>
+                            <%= schedules[i].end_at %>
+                        </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <div id="return-button">
+            <a href="/new" class="btn btn-secondary btn-lg" tabindex="-1" role="button">Add A New Schedule</a>
+        </div>
+        </section>
+    <%- include('../includes/footer.ejs') -%>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+                crossorigin="anonymous"></script>
+</body>
+
+</html>
